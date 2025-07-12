@@ -1,0 +1,77 @@
+
+What is WebSockets?
+--------------------
+- WebSockets is a communication protocol that provides full-duplex, persistent, bi-directional communication between the client (browser) and server over a single TCP connection.
+- Unlike HTTP (request-response), WebSockets allow the server to send data to the client without explicit requests.
+- Starts with an HTTP handshake and upgrades to WebSocket.
+- Examples: live chat, stock prices, collaborative editing.
+
+What is Socket.IO?
+-------------------
+- Socket.IO is a JavaScript library built on top of WebSockets.
+- Provides automatic reconnection, fallback to long-polling, broadcasting, event-based communication.
+- Makes real-time communication easier and more robust.
+
+HTTP stands for HyperText transfer Protocol which transfer the data from the client to the server and server to client in the Form of the text over the web browser with the help of API (GET,POST....)
+HTTPS stands for HyperText transfer Protocol which transfer the data from the client the server in the protected way by encrypting the message/data/text which is sent from the browser to the clien or the vice versa.
+
+WebSockets vs HTTP Requests
+-----------------------------
+| HTTP             | WebSockets                 |
+|------------------|----------------------------|
+| Request-Response | Persistent Connection      |
+| Client requests  | Either side sends anytime  |
+| Simple, stateless| Real-time, low latency     |
+
+When to use WebSockets over HTTP?
+----------------------------------
+- Use WebSockets when you need real-time, low latency updates (chat, games, dashboards).
+- Use HTTP for occasional data fetching and standard REST APIs.
+
+Pros & Cons
+-------------
+| WebSockets         | HTTP                    |
+|--------------------|-------------------------|
+| Real-time, bi-dir. | Simple, widely supported|
+| Complex infra      | Not for real-time       |
+
+Socket.IO vs WebSockets
+-------------------------
+| WebSockets            | Socket.IO             |
+|-----------------------|-----------------------|
+| Protocol              | Library on WebSockets |
+| Pure WS frames        | Rooms, namespaces, fallback |
+| Lower-level           | High-level, easy API |
+
+Summary
+--------
+- WebSockets: native, minimal overhead, language-agnostic.
+- Socket.IO: easy in Node.js, with extras like rooms, fallback, reconnect.
+
+
+
+
+
+
+
+What is Stateless and Statefull in protocols
+
+What is the Stateless Protocol?
+Stateless Protocols are the type of network protocols in which the Client sends a request to the server and the server responds back according to the current state. It does not require the server to retain session information or status about each communicating partner for multiple requests. 
+
+HTTP (Hypertext Transfer Protocol), UDP (User Datagram Protocol), and DNS (Domain Name System) are examples of Stateless Protocols. 
+
+Salient Features of Stateless Protocols
+Stateless Protocol simplifies the design of the Server.
+The stateless protocol requires fewer resources because the system does not need to keep track of the multiple link communications and the session details.
+In Stateless Protocol each information packet travels on its own without reference to any other packet.
+Each communication in Stateless Protocol is discrete and unrelated to those that precedes or follow.
+
+What is Stateful Protocol?
+In Stateful Protocol If client send a request to the server then it expects some kind of response, if it does not get any response then it resend the request. FTP (File Transfer Protocol), TCP, and Telnet are the example of Stateful Protocol. 
+
+Salient Features of Stateful Protocol
+Stateful Protocols provide better performance to the client by keeping track of the connection information.
+Stateful Application require Backing storage.
+Stateful request are always dependent on the server-side state.
+TCP session follow stateful protocol because both systems maintain information about the session itself during its life.
