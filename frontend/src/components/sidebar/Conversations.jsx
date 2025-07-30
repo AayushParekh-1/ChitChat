@@ -1,8 +1,9 @@
-import useGetConversations from "../../hooks/useGetConversations";
+import useGetConversations from "../../hooks/useGetConversation.js";
 import { getRandomEmoji } from "../../utils/emojis";
 import Conversation from "./Conversation";
 
 const Conversations = () => {
+
 	const { loading, conversations } = useGetConversations();
 	return (
 		<div className='py-2 flex flex-col overflow-auto'>

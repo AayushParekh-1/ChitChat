@@ -1,18 +1,19 @@
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import GenderCheckbox from "./GenderCheckbox.jsx";
 import { useState } from "react";
+import usesignIn from '../../hooks/useSignIn';
 
 
 const SignIn = () => {
 	const [inputs, setInputs] = useState({
-		fullName: "",
-		username: "",
-		password: "",
-		confirmPassword: "",
-		gender: "",
+		"fullName": "",
+		"userName": "",
+		"password": "",
+		"confirmPassword": "",
+		"gender": "",
 	});
 
-	const { loading, signup } = useSignup();
+	const { loading, signIn } = usesignIn();
 
 	const handleCheckboxChange = (gender) => {
 		setInputs({ ...inputs, gender });
@@ -20,14 +21,15 @@ const SignIn = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		await signup(inputs);
+		console.log("Submitting inputs:", inputs);
+		await signIn(inputs);
 	};
 
 	return (
 		<div className='flex flex-col items-center justify-center min-w-96 mx-auto'>
 			<div className='w-full p-6 rounded-lg shadow-md bg-gray-400 bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-0'>
 				<h1 className='text-3xl font-semibold text-center text-gray-300'>
-					Sign Up <span className='text-blue-500'> ChatApp</span>
+					Sign-In <span className='text-blue-500'> ChatApp</span>
 				</h1>
 
 				<form onSubmit={handleSubmit}>
@@ -52,8 +54,8 @@ const SignIn = () => {
 							type='text'
 							placeholder='johndoe'
 							className='w-full input input-bordered h-10'
-							value={inputs.username}
-							onChange={(e) => setInputs({ ...inputs, username: e.target.value })}
+							value={inputs.userName}
+							onChange={(e) => setInputs({ ...inputs, userName: e.target.value })}
 						/>
 					</div>
 
@@ -70,7 +72,7 @@ const SignIn = () => {
 						/>
 					</div>
 
-					<div>
+					<div className = 'mb-2'>
 						<label className='label'>
 							<span className='text-base label-text'>Confirm Password</span>
 						</label>
@@ -83,7 +85,7 @@ const SignIn = () => {
 						/>
 					</div>
 
-					<GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender} />
+					<GenderCheckbox onCheckboxChange={handleCheckboxChange} selectedGender={inputs.gender}/>
 
 					<Link
 						to={"/login"}
