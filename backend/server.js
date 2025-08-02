@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser'
@@ -13,6 +14,7 @@ import { connectDb } from '../backend/db/db.js';
 dotenv.config();
 
 const PORT = process.env.PORT || 5000;
+const __dirname = path.resolve();
 
 app.use(express.json()); //This middleware is used to deal with the JSON data usually parsing data available in req.body!(the body content while hitting Post request!)
 app.use(cookieParser());
@@ -25,6 +27,11 @@ app.use(cors({
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/user', userRoutes);
+
+app.use(express.static(path.join(__dirname, "/frontend/dist")))
+app.get('*',(req,res) =>{
+  res.sendFile(path.join(__dirname,"frontend","dist","index.html"))
+})
 
 connectDb().then(() => {
   server.listen(PORT, () => {
