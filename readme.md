@@ -5,7 +5,7 @@ A real-time chat application built with React, Node.js, Express, MongoDB, Socket
 ---
 
 ## Features
-
+- **Followed the mvp structure of mern stack applications**
 - **User Authentication** (Login/Signup with JWT & cookies)
 - **Real-time Messaging** (Socket.IO)
 - **Online User Status** (Green dot indicator)
