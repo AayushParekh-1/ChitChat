@@ -6,17 +6,17 @@ const useLogin = () =>{
     const [loading,setLoading] = useState(false)
     const {setAuthUser} = useAuthContext();
 
-    const login = async (username, password) =>{
-        const success = handleInputErrors(username, password)
+    const login = async (userName, password) =>{
+        const success = handleInputErrors({userName, password})
         if(!success) return;
         setLoading(true)
         try {
             const res = await fetch("/api/auth/login", {
                 method: "POST",
                 headers: {"Content-Type": "application/json"}, 
-                body: JSON.stringify({username,password})
+                body: JSON.stringify({userName,password})
             })
-
+            
             const data = await res.json()
             if(data.error){
                 throw new Error(data.error)
@@ -38,12 +38,13 @@ const useLogin = () =>{
 export default useLogin;
 
 
-function handleInputErrors({username,password}){
-    if(!username || !password){
-        toast.error("All fields are required")
-        return false
+function handleInputErrors({ userName, password }) {
+    if (!userName?.trim() || !password?.trim()) {
+        toast.error("All fields are required");
+        return false;
     }
     return true;
 }
+
 
 

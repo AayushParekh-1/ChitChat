@@ -13,7 +13,7 @@ export const useSocketContext = () =>{
 
 export const SocketContextProvider = ({children}) =>{
     const [socket,setSocket] = useState(null);
-    const [onlineUser,setOnlineUser] = useState([]);
+    const [onlineUser,setOnlineUsers] = useState([]);
     const {authUser} = useAuthContext();
 
     useEffect(() =>{
@@ -26,8 +26,8 @@ export const SocketContextProvider = ({children}) =>{
 
             setSocket(socket);
             // socket.on() is used to listen to the events. can be used both on client and server side.
-            socket.on("getOnlineeUsers", (users) => {
-                setOnlineUser(users);
+            socket.on("getOnlineUsers", (users) => {
+                setOnlineUsers(users);
             })
         
         return () => socket.close();
